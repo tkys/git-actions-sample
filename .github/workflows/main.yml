@@ -1,13 +1,19 @@
-name: My First Workflow  # ワークフローの名前 (任意)
+name: My First Workflow
 
 on:
-  push:  # プッシュ時にワークフローを実行
-    branches: [ "main" ]  # main ブランチへのプッシュのみ
+  push:
+    branches: [ "main" ]
 
 jobs:
-  build:  # ジョブの名前 (任意)
-    runs-on: ubuntu-latest  # ジョブを実行する環境 (Ubuntu の最新版)
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Echo a greeting  # ステップの名前 (任意)
-        run: echo "Hello, World!"  # 実行するコマンド
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python 3.9  # Python 環境をセットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"  # Python のバージョンを指定
+      - name: Display Python version
+        run: python --version  # Python のバージョンを表示
