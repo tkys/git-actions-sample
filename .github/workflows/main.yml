@@ -1,0 +1,13 @@
+name: My First Workflow  # ワークフローの名前 (任意)
+
+on:
+  push:  # プッシュ時にワークフローを実行
+    branches: [ "main" ]  # main ブランチへのプッシュのみ
+
+jobs:
+  build:  # ジョブの名前 (任意)
+    runs-on: ubuntu-latest  # ジョブを実行する環境 (Ubuntu の最新版)
+
+    steps:
+      - name: Echo a greeting  # ステップの名前 (任意)
+        run: echo "Hello, World!"  # 実行するコマンド
